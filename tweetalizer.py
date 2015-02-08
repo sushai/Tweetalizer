@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # read in a tweet
 # how many characters are in my tweet
 # am I within the limit?
