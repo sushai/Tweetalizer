@@ -13,8 +13,7 @@ def tweetalize():
     while True:
       tweet = getTweetFromUser()
       analyzeLength(tweet)
-      analyzeHashtags(tweet)
-      analyzeMentions(tweet)
+      analyzeWords(tweet)
 
 def getTweetFromUser():
     userInput = raw_input("What tweet would you like to analyze? To quit, just enter 'q'. ") #if using python 3, use input function
@@ -31,22 +30,33 @@ def analyzeLength(tweet):
     if tweetLength > maxTweetLength:
         print("The number of characters in this tweet is too damn high!\nThe limit is 140.")
 
-def analyzeHashtags(tweet):
+def analyzeWords(tweet):
     hashtagCount = 0
-    for word in tweet.split(' '):
-        firstCharacter = word[0]
-        if firstCharacter == "#":
-            print("Tweet contains the hashtag: %s" % word)
-            hashtagCount += 1
-    print("The tweet has %d total #hashtags" % hashtagCount)
-
-def analyzeMentions(tweet):
     mentionCount = 0
-    for word in tweet.split(' '):
-        firstCharacter = word[0]
-        if firstCharacter == "@":
-            print("Tweet contains the mention: %s" % word)
-            mentionCount += 1
+
+    tweetWords = tweet.split(' ')
+    for word in tweetWords:
+        if len(word) > 0:
+            if isHashtag(word):
+                hashtagCount += 1
+            elif isMention(word):
+                mentionCount += 1
+
+    print("The tweet has %d total #hashtags" % hashtagCount)
     print("The tweet has %d total @mentions" % mentionCount)
+
+def isHashtag(word):
+    firstCharacter = word[0]
+    if firstCharacter == "#":
+        print("Tweet contains the hashtag: %s" % word)
+        return True
+    return False
+
+def isMention(word):
+    firstCharacter = word[0]
+    if firstCharacter == "@":
+        print("Tweet contains the mention: %s" % word)
+        return True
+    return False
 
 tweetalize()
