@@ -17,23 +17,23 @@ def tweetalize():
       if tw == 'q' or tw == 'Q':
           exit()
 
-      print("Tweet is " + str(len(tw)) + " characters long")
-      if len(tw) > 140:
+      print("Tweet is " + str(len(tweet)) + " characters long")
+      if len(tweet) > 140:
           print("The number of characters in this tweet is too damn high!\nThe limit is 140.")
 
-      a = 0
-      for x in tw.split(' '):
+      hashtags = 0
+      for x in tweet.split(' '):
           if x[0] == "#":
               print("Tweet contains the hashtag: " + x)
-              a += 1
-      print("The tweet has " + str(a) + " total #hashtags")
+              hashtags += 1
+      print("The tweet has " + str(hashtags) + " total #hashtags")
 
-      b = 0
-      for x in tw.split(' '):
+      tweets = 0
+      for x in tweet.split(' '):
           if x[0] == "@":
               print("Tweet contains the mention: " + x)
-              b += 1
-      print("The tweet has " + str(b) + " total @mentions")
+              tweets += 1
+      print("The tweet has " + str(tweets) + " total @mentions")
 
 
 tweetalize()
