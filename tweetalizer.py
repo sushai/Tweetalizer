@@ -12,13 +12,17 @@ def tweetalize():
     print("Welcome to the awesometastic tweetalizer! Start analyzing your tweets now!")
 
     while True:
-      tw = raw_input("What tweet would you like to analyze? To quit, just enter 'q'. ") #if using python 3, use input function
+      tweet = raw_input("What tweet would you like to analyze? To quit, just enter 'q'. ") #if using python 3, use input function
 
-      if tw == 'q' or tw == 'Q':
+      if tweet == 'q' or tweet == 'Q':
           exit()
 
-      print("Tweet is " + str(len(tweet)) + " characters long")
-      if len(tweet) > 140:
+      tweetLength = len(tweet)
+      maxLength = 140
+
+      print("Tweet is " + str(tweetLength) + " characters long")
+      if tweetLength > maxLength:
+        #if len(tweet) > 140:
           print("The number of characters in this tweet is too damn high!\nThe limit is 140.")
 
       hashtags = 0
