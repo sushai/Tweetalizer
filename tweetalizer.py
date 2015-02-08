@@ -8,6 +8,14 @@
 
 import sys
 
+def tweetalize():
+    print("Welcome to the awesometastic tweetalizer! Start analyzing your tweets now!")
+    while True:
+      tweet = getTweetFromUser()
+      analyzeLength(tweet)
+      analyzeHashtags(tweet)
+      analyzeMentions(tweet)
+
 def getTweetFromUser():
     userInput = raw_input("What tweet would you like to analyze? To quit, just enter 'q'. ") #if using python 3, use input function
     if userInput == 'q' or userInput == 'Q':
@@ -40,13 +48,5 @@ def analyzeMentions(tweet):
             print("Tweet contains the mention: %s" % word)
             mentionCount += 1
     print("The tweet has %d total @mentions" % mentionCount)
-
-def tweetalize():
-    print("Welcome to the awesometastic tweetalizer! Start analyzing your tweets now!")
-    while True:
-      tweet = getTweetFromUser()
-      analyzeLength(tweet)
-      analyzeHashtags(tweet)
-      analyzeMentions(tweet)
 
 tweetalize()
