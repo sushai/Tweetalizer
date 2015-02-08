@@ -12,28 +12,35 @@ def tweetalize():
     print("Welcome to the awesometastic tweetalizer! Start analyzing your tweets now!")
 
     while True:
-      tweet = raw_input("What tweet would you like to analyze? To quit, just enter 'q'. ") #if using python 3, use input function
+      userInput = raw_input("What tweet would you like to analyze? To quit, just enter 'q'. ") #if using python 3, use input function
 
-      if tweet == 'q' or tweet == 'Q':
+      if userInput == 'q' or userInput == 'Q':
           exit()
 
-      print("Tweet is " + str(len(tweet)) + " characters long")
-      if len(tweet) > 140:
+      tweet = userInput
+
+      tweetLength = len(tweet)
+      print("Tweet is %d characters long", tweetLength)
+
+      maxTweetLength = 140
+      if tweetLength > maxTweetLength:
           print("The number of characters in this tweet is too damn high!\nThe limit is 140.")
 
       hashtagCount = 0
       for word in tweet.split(' '):
-          if word[0] == "#":
-              print("Tweet contains the hashtag: " + word)
+          firstCharacter = word[0]
+          if firstCharacter == "#":
+              print("Tweet contains the hashtag: %s", word)
               hashtagCount += 1
-      print("The tweet has " + str(hashtagCount) + " total #hashtags")
+      print("The tweet has %d total #hashtags", hashtagCount)
 
       mentionCount = 0
       for word in tweet.split(' '):
-          if word[0] == "@":
-              print("Tweet contains the mention: " + word)
+          firstCharacter = word[0]
+          if firstCharacter == "@":
+              print("Tweet contains the mention: %s", word)
               mentionCount += 1
-      print("The tweet has " + str(mentionCount) + " total @mentions")
+      print("The tweet has %d total @mentions", mentionCount)
 
 
 tweetalize()
